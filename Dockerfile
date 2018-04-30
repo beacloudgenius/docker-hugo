@@ -1,4 +1,4 @@
-FROM ruby:2.4-alpine
+FROM ruby:2.5.1-alpine3.7
 
 LABEL maintainer="nilesh@cloudgeni.us"
 
@@ -33,6 +33,7 @@ RUN wget "$HUGO_DOWNLOAD_URL" && \
 
 
 ENV VERSION=v10.0.0 NPM_VERSION=6 YARN_VERSION=latest
+ENV CONFIG_FLAGS="--fully-static --without-npm" DEL_PKGS="libstdc++" RM_DIRS=/usr/include
 
 RUN apk add --no-cache curl make gcc g++ python linux-headers binutils-gold gnupg libstdc++ && \
   for server in ipv4.pool.sks-keyservers.net keyserver.pgp.com ha.pool.sks-keyservers.net; do \
