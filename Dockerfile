@@ -147,6 +147,7 @@ RUN echo \
 
 RUN pip --no-cache-dir install awscli && rm -rf /var/cache/apk/*
 
+RUN apk update && apk add jq && rm -rf /var/cache/apk/*
 
 CMD ["htmlproofer","--help"]
 
